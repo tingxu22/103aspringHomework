@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Transaction = require('../models/Transaction')
-const ObjectId = mongoose.Schema.Types.ObjectId;
-
 
 isLoggedIn = (req,res,next) => {
   if (res.locals.loggedIn) {
@@ -12,7 +10,7 @@ isLoggedIn = (req,res,next) => {
   }
 }
 
-router.get('/transaction/',
+router.get('/transactions/',
   isLoggedIn,
   async (req, res, next) => {
       const sort = req.query.sortBy;
