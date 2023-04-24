@@ -6,7 +6,7 @@ const logger = require('morgan');
 const layouts = require("express-ejs-layouts");
 const pw_auth_router = require('./routes/pwauth')
 const toDoRouter = require('./routes/todo');
-const transactionsRouter = require('./routes/transaction')
+const transactionsRouter = require('./routes/transaction');
 const weatherRouter = require('./routes/weather');
 
 const User = require('./models/User');
@@ -88,9 +88,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-
-
 
 app.use(pw_auth_router)
 
