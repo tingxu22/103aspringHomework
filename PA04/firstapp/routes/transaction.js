@@ -10,21 +10,21 @@ isLoggedIn = (req,res,next) => {
   }
 }
 
-router.get('/transactions/',
+router.get('/transaction/',
   isLoggedIn,
   async (req, res, next) => {
-      const sort = req.query.sortBy;
+      const sortBy = req.query.sortBy;
       let transactions = [];
-      if (sort == 'category') {
+      if (sortBy == 'category') {
         transactions = await Transaction.find({})
           .sort({ category: 1 });
-      } else if (sort == 'amount') {
+      } else if (sortBy == 'amount') {
         transactions = await Transaction.find({})
           .sort({ amount: 1 });
-      } else if (sort == 'description') {
+      } else if (sortBy == 'description') {
         transactions = await Transaction.find({})
           .sort({ description: 1 });
-      } else if (sort== 'date') {
+      } else if (sortBy == 'date') {
         transactions= await Transaction.find({})
           .sort({ date: 1 });
       } else {
@@ -40,7 +40,7 @@ router.post('/transaction',
     const transaction = new Transaction(
       { description, amount, category, date } = req.body);
     await transaction.save();
-    res.redirect('/transactions');
+    res.redirect('/transaction');
 });
 
 router.get('/transaction/edit/:id',
@@ -57,7 +57,7 @@ router.get('/transaction/remove/:id',
   async (req, res, next) => {
       console.log("inside /transaction/remove/:id")
       await Transaction.deleteOne({ _id: req.params.id })
-      res.redirect('/transactions');
+      res.redirect('/transaction');
 });
 
 
@@ -72,7 +72,7 @@ router.post('/transaction/update/:id',
                 amount: req.body.amount,
                 date: req.body.date,
                 }});
-    res.redirect('/transactions');
+    res.redirect('/transaction');
 });
 
 router.get('/transaction/groupByCategory',

@@ -3,57 +3,57 @@
 
   <div class="row">
     <div class="col">
-      <p> Here is your list of things to do! </p>
+      <p> Here is your transactions! </p>
 
      
       <p class="m-2">
           <a  class="btn btn-lg btn-primary"
               href="/transaction/groupByCategory">group by category</a>
           <a class="btn btn-lg btn-primary"
-              href="?sort=category">sort by category</a>
+              href="?sortBy=category">sort by category</a>
           <a class="btn btn-lg btn-primary"
-              href="?sort=amount">sort by amount</a>
+              href="?sortBy=amount">sort by amount</a>
           <a class="btn btn-lg btn-primary"
-              href="?sort=description">sort by description</a>
+              href="?sortBy=description">sort by description</a>
           <a class="btn btn-lg btn-primary"
-              href="?sort=date">sort by date</a>
+              href="?sortBy=date">sort by date</a>
       </p>
     
       <table class="table table-bordered table-striped">
         <tr>
-          <th>Description</th>
-          <th>Amount</th>
-          <th>Category</th>
-          <th>Date</th>
-          <th>Edit</th>
-          <th>Delete</th>
+            <th>description</th>
+            <th>amount</th>
+            <th>category</th>
+            <th>date</th>
+            <th>delete</th>
+            <th>edit</th>
         </tr>
         <% transactions.forEach(transaction => { %>
-        <tr>
-          <td><%= transaction.description %></td>
-           <td><%= transaction.amount %></td>
-           <td><%= transaction.category %></td>
-           <td><%= transaction.date] %></td>
-          <td><a href="/transaction/remove/<%=transaction._id %>">
-             <i class="bi bi-trash"></i></a>
-          </td>
-           <td>
-             <a 
-                href="/transaction/edit/<%=transaction._id %>">
-             <i class="bi bi-pencil-square"></i></a>
-          </td>
-        </tr>
+            <tr>
+                <td><%= transaction.description %></td>
+                <td><%= transaction.amount %></td>
+                <td><%= transaction.category %></td>
+                <td><%= transaction.date %></td>
+                <td><a href="/transaction/remove/<%=transaction._id %>">
+                      <i class="bi bi-trash"></i></a>
+                </td>
+                <td><a href="/transaction/edit/<%=transaction._id %>">
+                  <i class="bi bi-pencil-square"></i></a>
+                </td>
+            </tr>
         <% }) %>
       </table>
-      </div>
-    </div>
+       
 
 
-<form method="post" action="todo">
-   <input type ="text" value="description" name="description">
-   <input type ="text" value="category" name="category">
-   <input type ="double" value="amount" name="amount">
-   <input type="date" value="mm/dd/yyyy" name="date">
-   <input type="submit" value="store">
+
+<form method="post" action="transaction">
+   <input type ="text" placeholder="description" name="description"><br>
+   <input type ="text" placeholder="category" name="category"><br>
+   <input type ="double" placeholder="amount" name="amount"><br>
+   <input type="date" placeholder="mm/dd/yyyy" name="date"><br>
+   <input type="submit" placeholder="store"><br>
 </form>
    
+</div>
+</div>
